@@ -1,0 +1,10 @@
+@import "../node_modules/bootstrap/scss/bootstrap";
+.App {
+  padding: 1rem;
+  .opciones{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 5px;
+    height: 70vh;
+  }
+}
