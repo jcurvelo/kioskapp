@@ -11,13 +11,21 @@ const db = {
     productos: dbFactory('productos.db'),
 }
 
-ipcMain.on('addProducto',(evt,arg)=>{
-    console.log(arg);
-    db.productos.insert(arg,function(err,doc){
-        if(err){
-            console.error(err);
-        }
-        console.log(doc);
+module.exports = ()=>{
+    ipcMain.on('addProducto',(evt,arg)=>{
+        db.productos.insert(arg,function(err,doc){
+            if(err){
+                console.error(err);
+            }
+            console.log(doc);
+        });
     });
 
-})
+    ipcMain.on('buscarDatosProductos',(evt,arg)=>{
+        console.log('Hi');
+        // db.productos.find({},(err,doc)=>{
+        //     console.log(doc);
+        // })
+    })
+}
+

@@ -6,7 +6,7 @@ export default function OptionSelectButton(props) {
     <div
       className="optionSelectButton"
       onClick={() => {
-        history.push('/inventario');
+        history.push(props.ruta);
       }}
     >
       {props.name}

@@ -8,10 +8,9 @@ export default function InputText(props) {
         name={props.name}
         id={props.name}
         placeholder={props.place}
-        min={props.type === 'number' ? props.min : false}
-        max={props.type === 'number' ? props.max : false}
-        step={props.step ? props.step : 1}
-        value={props.value}
+        min={props.type === 'number' ? props.min : null}
+        max={props.type === 'number' ? props.max : null}
+        step={props.step ? props.step : 1} onChange={props.changeHandler}
       />
     </div>
   );

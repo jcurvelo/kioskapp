@@ -26,7 +26,7 @@ export default function VistaInventario() {
           </Route>
           <Route path="/inventario">
              <GoButton location="/" />
-            <button
+            <button className="btn btn-primary mb-2"
               onClick={() => {
                 history.push("/inventario/nuevoProducto");
               }}
