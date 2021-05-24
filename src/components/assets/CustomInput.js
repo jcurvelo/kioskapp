@@ -11,6 +11,7 @@ export default function InputText(props) {
         min={props.type === 'number' ? props.min : null}
         max={props.type === 'number' ? props.max : null}
         step={props.step ? props.step : 1} onChange={props.changeHandler}
+        {...props.register}
       />
     </div>
   );

@@ -31,7 +31,10 @@ function App() {
             <Config />
           </Route>
           <Route exact path="/">
-            <h1>Kioskapp</h1>
+            <div className="d-flex justify-content-center">
+              <h1 style={{color:'#f54611', fontWeight:'bold'}}>KIOSK</h1><h1 style={{color:'#288d6f'}}>APP</h1>
+            </div>
+            <h4 className="text-center">$1 = BsS. 3,000,000.00</h4>
             <Home />
           </Route>
         </Switch>

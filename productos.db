@@ -1,1 +1,5 @@
-{"type":"Productos","nombreProducto":"Harina","cantidadProducto":"24","precioProducto":"1","_id":"gj7M92QBf9LAFjCy","createdAt":{"$$date":1620677529724},"updatedAt":{"$$date":1620677529724}}
+{"nombreProducto":"Azúcar","cantidadProducto":"12","costoTotal":"15","precioProducto":"2","_id":"Bm78hNUmcVvRfsVN","createdAt":{"$$date":1621404361354},"updatedAt":{"$$date":1621404361354}}
+{"nombreProducto":"Harina","cantidadProducto":"24","precioProducto":"1","_id":"JoOjKV7b9lEcT6WT","createdAt":{"$$date":1621143168580},"updatedAt":{"$$date":1621143168580}}
+{"nombreProducto":"Harina","cantidadProducto":"12","precioProducto":"1","_id":"MnBixWwi0N5sm1fw","createdAt":{"$$date":1621377140569},"updatedAt":{"$$date":1621377140569}}
+{"nombreProducto":"Harina","cantidadProducto":"24","precioProducto":"1","_id":"z2zW9VklEUMIHmdW","createdAt":{"$$date":1621141925369},"updatedAt":{"$$date":1621141925369}}
+{"nombreProducto":"Mayonesa","cantidadProducto":"12","costoTotal":"10","precioProducto":"2","_id":"3pJo7vX4MMtb9glW","createdAt":{"$$date":1621889850565},"updatedAt":{"$$date":1621889850565}}

@@ -1,84 +1,85 @@
-import { Component } from "react";
-import CustomInput from "../assets/CustomInput";
+import { useHistory, useLocation } from "react-router-dom";
+import { useForm } from "react-hook-form";
 const { ipcRenderer } = require("electron");
 
-class FormProductos extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      nombreProducto: "",
-      cantidadProducto: null,
-      precioProducto: null,
-    };
-    this.nombreBinder = this.nombreBinder.bind(this);
-    this.cantidadBinder = this.cantidadBinder.bind(this);
-    this.precioBinder = this.precioBinder.bind(this);
+export default function FormProductos(props) {
+  let history = useHistory();
+  let location = useLocation();
+  const { register, handleSubmit } = useForm();
+  const onSubmit = (data) => {
+    if(location.state){
+      ipcRenderer.invoke('editProducto',{...data,_id:location.state.id});
+    }else{
+      ipcRenderer.invoke('addProducto',data);
+    }
+    history.push('/inventario');
   }
-  SubmitProducto() {
-    ipcRenderer.send("addProducto", {
-      type:'Productos',
-      nombreProducto: this.state.nombreProducto,
-      cantidadProducto: this.state.cantidadProducto,
-      precioProducto: this.state.precioProducto,
-    });
-  }
-  nombreBinder(event) {
-    this.setState({ nombreProducto: event.target.value });
-  }
-  cantidadBinder(event) {
-    this.setState({ cantidadProducto: event.target.value });
-  }
-  precioBinder(event) {
-    this.setState({ precioProducto: event.target.value });
-  }
-  render() {
-    return (
-      <div className="formProductos p-3">
-        <h3>Agregar Nuevo Producto</h3>
-        <hr />
-        <form action="">
-          <CustomInput
-            changeHandler={this.nombreBinder}
-            value={this.state.nombreProducto}
-            name="nombreProducto"
-            texto="Nombre del Producto"
-            place="E.J: Harina, Azúcar"
+
+  return (
+    <div className="formProductos p-3">
+      <h3>Agregar Nuevo Producto</h3>
+      <hr />
+      <form action="" onSubmit={handleSubmit(onSubmit)}>
+        <div className="form-group">
+          <label htmlFor="nombreProducto">Nombre del Producto</label>
+          <input
             type="text"
+            name="nombreProducto"
+            id="nombreProducto"
+            className="form-control"
+            {...register("nombreProducto", { required: true })}
+            defaultValue={location.state ? location.state.nombreProducto : null }
           />
-          <CustomInput
-            changeHandler={this.cantidadBinder}
-            value={this.state.cantidadProducto}
-            name="cantidad"
-            texto="Cantidad en existencia"
-            place="#"
-            min="0"
-            max="999"
+        </div>
+        <div className="form-group">
+          <label htmlFor="cantidadProducto">Cantidad</label>
+          <input
             type="number"
+            name="cantidadProducto"
+            id="cantidadProducto"
+            className="form-control"
+            {...register("cantidadProducto", { required: true, min:0, max:9999 })}
+            defaultValue={location.state ? location.state.cantidadProducto : null }
+
           />
-          <CustomInput
-            changeHandler={this.precioBinder}
-            value={this.state.precioProducto}
-            name="precio"
-            texto="Precio por Unidad"
-            place="$"
-            min="0"
+        </div>
+        <div className="form-group">
+          <label htmlFor="costoTotal">Costo Total</label>
+          <input
+            type="number"
             step=".01"
-            max="99999"
-            type="number"
+            name="costoTotal"
+            id="costoTotal"
+            className="form-control"
+            {...register("costoTotal", { required: true, min:0, max:9999 })}
+            defaultValue={location.state ? location.state.costoTotal : null }
+
           />
-          <button
-            type="button"
-            onClick={() => {
-              this.SubmitProducto();
-            }}
-            className="btn btn-success btn-lg mt-2"
-          >
-            Aceptar
-          </button>
-        </form>
-      </div>
-    );
-  }
+        </div>
+        <div className="form-group">
+          <label htmlFor="precioProducto">Precio</label>
+          <input
+            type="number"
+            step=".01"
+            name="precioProducto"
+            id="precioProducto"
+            className="form-control"
+            placeholder={()=>{}}
+            {...register("precioProducto", { required: true, min:0, max:9999 })}
+            defaultValue={location.state ? location.state.precioProducto : null }
+
+          />
+        </div>
+        <button
+          type="submit"
+          className="btn btn-success btn-lg mt-2"
+        >
+          {location.state ? 'Aceptar Cambios' : 'Aceptar'}
+        </button>
+        <br />
+        <button type="button" className="btn btn-primary mt-1" onClick={()=>{}}>Calcular precio minimo</button>
+      </form>
+    </div>
+  );
 }
 
-export default FormProductos;

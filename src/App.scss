@@ -7,4 +7,11 @@
     gap: 5px;
     height: 70vh;
   }
+  @media (max-width:500px) {
+    .opciones{
+      grid-template-columns: 1fr;
+      height: 18vh;
+      text-align: center;
+    }
+  }
 }

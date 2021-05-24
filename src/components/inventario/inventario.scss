@@ -1,0 +1,33 @@
+.tablaProductos{
+    @keyframes aparecer {
+        from{
+            opacity: 0;
+            // transform: translateY(8px);
+        }
+        to{
+            opacity: 1;
+            // transform: translateY(0px);
+        }
+    }
+    table{
+        tr{
+            opacity: 0;
+            // transform: translateY(8px);
+            animation-name: aparecer;
+            animation-duration: 200ms;
+            animation-fill-mode: forwards;
+            animation-timing-function: ease-out;
+            .tableButtons{
+                cursor: pointer;
+                &:hover{
+                    opacity: 0.8;
+                }
+            }
+        }
+        .listado{
+            &:hover{
+                box-shadow: -5px 0px 0px red;
+            }
+        }
+    }
+}

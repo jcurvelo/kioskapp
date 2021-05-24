@@ -1,12 +1,15 @@
 import TableVenta from "./TableVenta";
 import FormVenta from "./FormVenta";
 import GoButton from "../assets/GoButton";
+import ToFormButton from '../assets/ToFormButton';
 import {
   HashRouter as Router,
   Switch,
   Route,
   useHistory,
 } from "react-router-dom";
+import "./ventas.scss";
+
 export default function VistaVenta(props) {
   let history = useHistory();
   return (
@@ -21,14 +24,17 @@ export default function VistaVenta(props) {
           <Route>
             <GoButton location="/" />
             <h3>Ventas</h3>
-            <button
+            <ToFormButton history={history} location="/venta/nuevaVenta" texto="Nueva Venta" />
+            {/* <div
               onClick={() => {
                 history.push("/venta/nuevaVenta");
               }}
-              className="btn btn-primary mt-2 mb-1"
+              className="nuevaVentaBtn"
             >
-              Nueva Venta
-            </button>
+              <div className="inside">
+                Nueva Venta
+              </div>
+            </div> */}
             <TableVenta />
           </Route>
         </Switch>

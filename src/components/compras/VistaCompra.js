@@ -1,6 +1,7 @@
 import GoButton from "../assets/GoButton";
 import TableCompra from "./TableCompra";
 import FormCompra from "./FormCompra";
+import ToFormButton from '../assets/ToFormButton';
 import {
   HashRouter as Router,
   Switch,
@@ -21,7 +22,8 @@ export default function VistaCompra(props) {
           <Route path="/compra">
             <GoButton location="/" />
             <h3>Compras</h3>
-            <button className="btn btn-primary mb-2" onClick={()=>{history.push('/compra/nuevaCompra')}}>Nueva Compra</button>
+            {/* <button className="btn btn-primary mb-2" onClick={()=>{history.push('/compra/nuevaCompra')}}>Nueva Compra</button> */}
+            <ToFormButton history={history} texto="Nueva Compra" location="/compra/nuevaCompra" />
             <TableCompra />
           </Route>
         </Switch>

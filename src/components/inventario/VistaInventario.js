@@ -1,6 +1,7 @@
 import TablaProductos from "./TablaProductos";
 import FormProductos from "./FormProductos";
 import GoButton from '../assets/GoButton';
+import ToFormButton from '../assets/ToFormButton.js';
 import {
   HashRouter as Router,
   Switch,
@@ -26,13 +27,14 @@ export default function VistaInventario() {
           </Route>
           <Route path="/inventario">
              <GoButton location="/" />
-            <button className="btn btn-primary mb-2"
+            {/* <button className="btn btn-primary mb-2"
               onClick={() => {
                 history.push("/inventario/nuevoProducto");
               }}
             >
               Agregar Nuevo Producto
-            </button>
+            </button> */}
+            <ToFormButton history={history} location="/inventario/nuevoProducto" texto="Agregar Nuevo Producto"/>
             <TablaProductos></TablaProductos>
           </Route>
         </Switch>
